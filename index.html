@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biuletyn Wiadomości - Polska i Świat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .date {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .news-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .news-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 3px solid;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .poland .section-title {
+            border-color: #e74c3c;
+        }
+
+        .world .section-title {
+            border-color: #3498db;
+        }
+
+        .tech .section-title {
+            border-color: #9b59b6;
+        }
+
+        .sports .section-title {
+            border-color: #f39c12;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .poland .news-item {
+            border-left-color: #e74c3c;
+        }
+
+        .world .news-item {
+            border-left-color: #3498db;
+        }
+
+        .tech .news-item {
+            border-left-color: #9b59b6;
+        }
+
+        .sports .news-item {
+            border-left-color: #f39c12;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(5px);
+        }
+
+        .news-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .news-summary {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .news-source {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .update-time {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📰 Biuletyn Wiadomości</h1>
+            <div class="date" id="currentDate"></div>
+            <button class="refresh-btn" onclick="refreshNews()">🔄 Odśwież wiadomości</button>
+        </div>
+
+        <div id="newsContent">
+            <div class="news-grid">
+                <div class="news-section poland">
+                    <h2 class="section-title">
+                        <span class="icon">🇵🇱</span>
+                        Polska
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Strategia Bezpieczeństwa Narodowego przyjęta przez rząd</div>
+                        <div class="news-summary">Rząd Donalda Tuska przyjął nową Strategię Bezpieczeństwa Narodowego. MON planuje wykorzystać unijne miliardy na wzmocnienie obronności Polski.</div>
+                        <div class="news-source">Forsal.pl</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Polskie drogi szybkiego ruchu - 350 km do końca roku</div>
+                        <div class="news-summary">Polska planuje oddać do użytku 350 kilometrów dróg szybkiego ruchu do końca 2025 roku, co znacznie poprawi komunikację w kraju.</div>
+                        <div class="news-source">Rzeczpospolita</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Notowania rządu Tuska w badaniach CBOS</div>
+                        <div class="news-summary">Dobre notowania rządu wynoszą 32-35%, podczas gdy negatywne oscylują wokół 50-55%, zbliżając się do 60% w najnowszych badaniach.</div>
+                        <div class="news-source">Rzeczpospolita</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Fałszywe e-maile PGNiG - ostrzeżenie CERT Polska</div>
+                        <div class="news-summary">CERT Polska ostrzega przed nową falą oszustw z wykorzystaniem marki PGNiG. Cyberprzestępcy rozsyłają fałszywe e-maile o zaległych płatnościach.</div>
+                        <div class="news-source">Forsal.pl</div>
+                    </div>
+                </div>
+
+                <div class="news-section world">
+                    <h2 class="section-title">
+                        <span class="icon">🌍</span>
+                        Świat
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Wielka Brytania planuje uznanie państwa palestyńskiego</div>
+                        <div class="news-summary">Wielkiej Brytanii grozi uznaniem państwa palestyńskiego we wrześniu, jeśli Izrael nie zobowiąże się do pokoju w Strefie Gazy.</div>
+                        <div class="news-source">NPR</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Strzelanina w centrum Manhattanu</div>
+                        <div class="news-summary">Samotny strzelec zabił cztery osoby na Manhattanie, zanim popełnił samobójstwo. To najkrwawszy atak z użyciem broni w Nowym Jorku od 25 lat.</div>
+                        <div class="news-source">CNN</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Negocjacje handlowe USA-Chiny w Sztokholmie</div>
+                        <div class="news-summary">Dwudniowe spotkanie negocjatorów handlowych z USA i Chin w Sztokholmie zakończyło się bez jasnej ścieżki uniknięcia wysokich ceł handlowych.</div>
+                        <div class="news-source">CNN</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Pożary w Turcji - ofiary wśród strażaków</div>
+                        <div class="news-summary">Szalejące pożary w Turcji zabiły co najmniej 10 strażaków i ratowników. Sytuacja pozostaje krytyczna.</div>
+                        <div class="news-source">CNN</div>
+                    </div>
+                </div>
+
+                <div class="news-section tech">
+                    <h2 class="section-title">
+                        <span class="icon">💻</span>
+                        Technologie
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">BRICS proponuje globalną kontrolę AI przez ONZ</div>
+                        <div class="news-summary">Kraje BRICS zaproponowały, aby ONZ przejęła wiodącą rolę w ustanawianiu globalnych ram zarządzania sztuczną inteligencją.</div>
+                        <div class="news-source">South China Morning Post</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Texas wprowadza kompleksowe prawo AI</div>
+                        <div class="news-summary">Teksas przyjął jedno z najbardziej wszechstronnych stanowych praw dotyczących AI w USA, obejmujące wymogi transparentności i protokoły łagodzenia uprzedzeń.</div>
+                        <div class="news-source">NBC DFW</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Microsoft rozwija modele rozumowania AI</div>
+                        <div class="news-summary">Microsoft podobno pracuje nad modelami rozumowania AI, które mają konkurować z zaawansowanymi modelami OpenAI.</div>
+                        <div class="news-source">Crescendo AI</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Google prezentuje satelity FireSat</div>
+                        <div class="news-summary">Google we współpracy z Earth Fire Alliance i Muon Space zaprezentował pierwsze obrazy pożarów wykrytych przez rewolucyjną konstelację satelitów FireSat.</div>
+                        <div class="news-source">Google AI Blog</div>
+                    </div>
+                </div>
+
+                <div class="news-section sports">
+                    <h2 class="section-title">
+                        <span class="icon">⚽</span>
+                        Sport
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Katie Ledecky wygrywa 1500m stylem dowolnym</div>
+                        <div class="news-summary">Katie Ledecky zdobyła złoto na 1500m stylem dowolnym na Mistrzostwach Świata w Pływaniu, to jej 22. tytuł mistrzyni świata.</div>
+                        <div class="news-source">CNN Sports</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Venus Williams otrzymuje dziką kartę do US Open</div>
+                        <div class="news-summary">Venus Williams otrzymała dziką kartę z Reilly Opelką do gry w mikście podczas US Open, powracając na korty po dłuższej przerwie.</div>
+                        <div class="news-source">CNN Sports</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Śmierć legendy baseballu Ryne Sandberga</div>
+                        <div class="news-summary">Zmarł Ryne Sandberg, członek Galerii Sław i legenda Chicago Cubs, w wieku 65 lat. Baseball stracił jedną ze swoich największych gwiazd.</div>
+                        <div class="news-source">CNN Sports</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Ukraiński pływak mistrzem świata</div>
+                        <div class="news-summary">Pływak, który uciekł ze swojego rodzinnego miasta po rosyjskiej inwazji na Ukrainę, nigdy nie myślał, że zostanie mistrzem świata.</div>
+                        <div class="news-source">CNN Sports</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="update-time">
+            Ostatnia aktualizacja: <span id="updateTime"></span>
+        </div>
+    </div>
+
+    <script>
+        // Aktualizuj datę
+        function updateDate() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('pl-PL', options);
+            document.getElementById('updateTime').textContent = now.toLocaleTimeString('pl-PL');
+        }
+
+        // Symulacja odświeżania wiadomości
+        function refreshNews() {
+            const refreshBtn = document.querySelector('.refresh-btn');
+            const newsContent = document.getElementById('newsContent');
+            
+            refreshBtn.textContent = '🔄 Odświeżanie...';
+            refreshBtn.style.opacity = '0.7';
+            refreshBtn.disabled = true;
+            
+            newsContent.innerHTML = '<div class="loading">Ładowanie najnowszych wiadomości...</div>';
+            
+            // Symulacja ładowania przez 2 sekundy
+            setTimeout(() => {
+                // Przywrócenie treści (w rzeczywistej aplikacji tutaj byłoby nowe pobieranie danych)
+                location.reload();
+            }, 2000);
+        }
+
+        // Animacja pojawiania się elementów
+        function animateElements() {
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.6s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+
+        // Auto-refresh co 10 minut
+        function startAutoRefresh() {
+            setInterval(() => {
+                updateDate();
+            }, 60000); // Aktualizuj co minutę
+
+            // Opcjonalnie: auto-refresh wiadomości co 10 minut
+            // setInterval(refreshNews, 600000);
+        }
+
+        // Uruchom po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDate();
+            animateElements();
+            startAutoRefresh();
+        });
+
+        // Dodaj efekt parallax dla tła
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            document.body.style.transform = `translateY(${rate}px)`;
+        });
+    </script>
+</body>
+</html>
