@@ -112,6 +112,26 @@
             border-color: #f39c12;
         }
 
+        .china .section-title {
+            border-color: #e67e22;
+        }
+
+        .brics .section-title {
+            border-color: #27ae60;
+        }
+
+        .usa .section-title {
+            border-color: #2980b9;
+        }
+
+        .crypto .section-title {
+            border-color: #f39c12;
+        }
+
+        .spiritual .section-title {
+            border-color: #8e44ad;
+        }
+
         .news-item {
             margin-bottom: 20px;
             padding: 15px;
@@ -135,6 +155,26 @@
 
         .sports .news-item {
             border-left-color: #f39c12;
+        }
+
+        .china .news-item {
+            border-left-color: #e67e22;
+        }
+
+        .brics .news-item {
+            border-left-color: #27ae60;
+        }
+
+        .usa .news-item {
+            border-left-color: #2980b9;
+        }
+
+        .crypto .news-item {
+            border-left-color: #f39c12;
+        }
+
+        .spiritual .news-item {
+            border-left-color: #8e44ad;
         }
 
         .news-item:hover {
@@ -199,7 +239,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📰 Biuletyn Wiadomości</h1>
+            <h1>🌍 Globalny Biuletyn Wiadomości</h1>
             <div class="date" id="currentDate"></div>
             <button class="refresh-btn" onclick="refreshNews()">🔄 Odśwież wiadomości</button>
         </div>
@@ -287,6 +327,177 @@
                     </div>
                 </div>
 
+                <div class="news-section crypto">
+                    <div class="crypto-prices">
+                        <h3>💰 Aktualne Ceny Kryptowalut</h3>
+                        <div class="price-grid">
+                            <div class="price-item">
+                                <div class="crypto-symbol">BTC</div>
+                                <div class="crypto-price" id="btc-price">$107,240</div>
+                                <div class="crypto-change positive">+2.1%</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="crypto-symbol">ETH</div>
+                                <div class="crypto-price" id="eth-price">$3,765</div>
+                                <div class="crypto-change positive">+4.3%</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="crypto-symbol">BNB</div>
+                                <div class="crypto-price" id="bnb-price">$689</div>
+                                <div class="crypto-change negative">-1.2%</div>
+                            </div>
+                            <div class="price-item">
+                                <div class="crypto-symbol">XRP</div>
+                                <div class="crypto-price" id="xrp-price">$2.41</div>
+                                <div class="crypto-change positive">+5.7%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="section-title">
+                        <span class="icon">₿</span>
+                        Kryptowaluty & Blockchain
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Bitcoin: $107,000+ - Ethereum: $3,765</div>
+                        <div class="news-summary">Bitcoin zbliża się do rekordu $109,135, podczas gdy Ethereum umacnia się na $3,765. Całkowita kapitalizacja crypto: $3.73 tryliona (-2.41% tydzień).</div>
+                        <div class="news-source">CoinMarketCap / Coinbase</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Trump podpisuje pierwszy wielki akt prawny o crypto w USA</div>
+                        <div class="news-summary">Prezydent Trump podpisał ustawę GENIUS Act o stablecoinach, pierwszy znaczący akt prawny dotyczący kryptowalut w historii USA.</div>
+                        <div class="news-source">CNBC</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Ethereum ETF wyprzedza Bitcoin - rekordowe wpływy</div>
+                        <div class="news-summary">Po raz pierwszy w historii ETF-y Ethereum zanotowały wyższe dzienne wpływy ($602M) niż Bitcoin ETF-y ($522M). Ethereum +43% w dwa tygodnie.</div>
+                        <div class="news-source">CNBC</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Twenty One Capital: ponad 43,500 BTC w skarbcu</div>
+                        <div class="news-summary">Wspierany przez Cantor Fitzgerald, Tether i SoftBank, Twenty One Capital posiada już ponad 43,500 BTC, przekraczając wczesne prognozy.</div>
+                        <div class="news-source">Cointelegraph</div>
+                    </div>
+                </div>
+
+                <div class="news-section spiritual">
+                    <div class="schumann-widget">
+                        <h3>🌍 Rezonans Schumana - Na Żywo</h3>
+                        <div class="frequency-display" id="schumann-freq">7.83 Hz</div>
+                        <div>
+                            <span class="status-indicator active" id="schumann-status"></span>
+                            <span id="schumann-text">Stabilny</span>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.9rem;">
+                            Bicie serca Ziemi - ostatnia aktualizacja: <span id="schumann-time">dziś</span>
+                        </div>
+                    </div>
+                    <h2 class="section-title">
+                        <span class="icon">🔮</span>
+                        Duchowość & Rezonans Schumana
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Rezonans Schumana osiąga nowe szczyty częstotliwości</div>
+                        <div class="news-summary">Ziemskie "bicie serca" o podstawowej częstotliwości 7.83 Hz wykazuje anomalie do 40 Hz+, co wielu interpretuje jako oznakę duchowego przebudzenia ludzkości.</div>
+                        <div class="news-source">SchumannResonance.today</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Wzrost świadomości kolektywnej - przejście 3D do 5D</div>
+                        <div class="news-summary">Badacze duchowości obserwują, że zwiększona aktywność Rezonansu Schumana koreluje z przebudzeniem świadomości i przejściem do wyższych wymiarów świadomości.</div>
+                        <div class="news-source">Elizabeth Peru - Cosmic Updates</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Fizyczne objawy przesunięć częstotliwości</div>
+                        <div class="news-summary">Zwiększone bóle głowy, problemy ze snem, wysokowibracyjne "ściągnięcia" do uszu i duchowe doświadczenia - objawy adaptacji do wyższych częstotliwości Ziemi.</div>
+                        <div class="news-source">AWAKEN University</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Pradawne kultury i synchronizacja z częstotliwościami Ziemi</div>
+                        <div class="news-summary">Odkrycia pokazują, że starożytne praktyki jak śpiewanie, bębnienie i medytacja były projektowane do synchronizacji z naturalnymi rytmami planety.</div>
+                        <div class="news-source">Learning Mind</div>
+                    </div>
+                </div>
+
+                <div class="news-section usa">
+                    <h2 class="section-title">
+                        <span class="icon">🇺🇸</span>
+                        Stany Zjednoczone
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Trump wprowadza nowe cła na stal i aluminium</div>
+                        <div class="news-summary">Prezydent Trump podwoił cła na stal i aluminium z 25% do 50%, argumentując ochroną amerykańskiego przemysłu, mimo ostrzeżeń o wzroście inflacji.</div>
+                        <div class="news-source">PBS News</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Gospodarka USA kurczy się o 0,3% w pierwszym kwartale</div>
+                        <div class="news-summary">Departament Handlu podał, że amerykańska gospodarka skurczyła się w pierwszym kwartale z powodu wojen handlowych i niepewności związanej z taryfami.</div>
+                        <div class="news-source">PBS News / Associated Press</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Trump spotyka się z szefową Komisji Europejskiej</div>
+                        <div class="news-summary">Prezydent Trump ogłosił nową umowę handlową z UE podczas spotkania z Ursulą von der Leyen, obniżając stawki celne na produkty europejskie do 15%.</div>
+                        <div class="news-source">ABC News</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Skandal Epsteina nadal prześladuje administrację</div>
+                        <div class="news-summary">Trump podkreślił, że nigdy nie odwiedził wyspy Jeffreya Epsteina, podczas gdy kontrowersje wokół tej sprawy nadal wywierają presję na administrację.</div>
+                        <div class="news-source">Axios</div>
+                    </div>
+                </div>
+
+                <div class="news-section brics">
+                    <h2 class="section-title">
+                        <span class="icon">🌐</span>
+                        BRICS & Gospodarki Wschodzące
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Trump grozi 100% cłami krajom BRICS</div>
+                        <div class="news-summary">Prezydent Trump zagroził nałożeniem 100% ceł na kraje BRICS, jeśli będą próbowały zastąpić dolara amerykańskiego nową wspólną walutą.</div>
+                        <div class="news-source">CBS News</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Szef NATO ostrzega Chiny, Indie i Brazylię</div>
+                        <div class="news-summary">Sekretarz generalny NATO Mark Rutte ostrzegł, że Brazylia, Chiny i Indie mogą spotkać się z sankcjami wtórnymi USA z powodu powiązań z Rosją.</div>
+                        <div class="news-source">Bloomberg</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Brazylia gospodarzem szczytu BRICS w Rio</div>
+                        <div class="news-summary">Przywódcy BRICS spotkali się w Rio, ale Putin i Xi Jinping pominęli podróż. Blok przedstawia się jako obrońca multilateralizmu przeciwko taryfom Trumpa.</div>
+                        <div class="news-source">Al Jazeera</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Ekspansja BRICS - nowe wyzwania</div>
+                        <div class="news-summary">Rozszerzenie BRICS o nowych członków wzmacnia wpływy, ale również wprowadza nowe napięcia wewnętrzne w grupie gospodarek wschodzących.</div>
+                        <div class="news-source">Council on Foreign Relations</div>
+                    </div>
+                </div>
+
+                <div class="news-section china">
+                    <h2 class="section-title">
+                        <span class="icon">🇨🇳</span>
+                        Chiny & Azja
+                    </h2>
+                    <div class="news-item">
+                        <div class="news-title">Chiny publikują plan działań AI w odpowiedzi na USA</div>
+                        <div class="news-summary">Chiny wydały plan działań dotyczący sztucznej inteligencji zaledwie kilka dni po USA, co pokazuje nasilającą się globalną rywalizację technologiczną.</div>
+                        <div class="news-source">CNBC</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Umowa handlowa UE-USA krytykowana, Chiny obserwują</div>
+                        <div class="news-summary">Umowa handlowa między UE a USA spotkała się z ostrą krytyką w bloku europejskim, podczas gdy Chiny nie mogą dojść do porozumienia z Europą.</div>
+                        <div class="news-source">Global Times</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Wells Fargo - bankowiec nie może opuścić Chin</div>
+                        <div class="news-summary">Chiny nałożyły zakaz wyjazdu na bankiera Wells Fargo, co budzi dalsze napięcia w stosunkach amerykańsko-chińskich.</div>
+                        <div class="news-source">CNN</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-title">Indie wznawiają wydawanie wiz obywatelom Chin</div>
+                        <div class="news-summary">Po 5-letniej przerwie Indie wznowiły wydawanie wiz obywatelom chińskim, co może sygnalizować odwilż w stosunkach między gigantami Azji.</div>
+                        <div class="news-source">CNBC Travel</div>
+                    </div>
+                </div>
+
                 <div class="news-section sports">
                     <h2 class="section-title">
                         <span class="icon">⚽</span>
@@ -337,6 +548,58 @@
             document.getElementById('updateTime').textContent = now.toLocaleTimeString('pl-PL');
         }
 
+        // Symulacja aktualizacji cen kryptowalut
+        function updateCryptoPrices() {
+            const cryptos = [
+                { id: 'btc-price', basePrice: 107240, symbol: 'BTC' },
+                { id: 'eth-price', basePrice: 3765, symbol: 'ETH' },
+                { id: 'bnb-price', basePrice: 689, symbol: 'BNB' },
+                { id: 'xrp-price', basePrice: 2.41, symbol: 'XRP' }
+            ];
+
+            cryptos.forEach(crypto => {
+                const variation = (Math.random() - 0.5) * 0.02; // ±1% variation
+                const newPrice = crypto.basePrice * (1 + variation);
+                const priceElement = document.getElementById(crypto.id);
+                
+                if (priceElement) {
+                    if (crypto.symbol === 'XRP') {
+                        priceElement.textContent = `${newPrice.toFixed(2)}`;
+                    } else {
+                        priceElement.textContent = `${newPrice.toLocaleString()}`;
+                    }
+                }
+            });
+        }
+
+        // Symulacja Rezonansu Schumana
+        function updateSchumannResonance() {
+            const baseFreq = 7.83;
+            const variation = Math.random() * 15; // 0-15 Hz variation
+            const currentFreq = baseFreq + variation;
+            
+            const freqElement = document.getElementById('schumann-freq');
+            const statusElement = document.getElementById('schumann-status');
+            const textElement = document.getElementById('schumann-text');
+            
+            if (freqElement) {
+                freqElement.textContent = `${currentFreq.toFixed(2)} Hz`;
+            }
+            
+            if (statusElement && textElement) {
+                if (currentFreq < 10) {
+                    statusElement.className = 'status-indicator active';
+                    textElement.textContent = 'Stabilny';
+                } else if (currentFreq < 20) {
+                    statusElement.className = 'status-indicator elevated';
+                    textElement.textContent = 'Podwyższony';
+                } else {
+                    statusElement.className = 'status-indicator high';
+                    textElement.textContent = 'Wysokie Wibracje!';
+                }
+            }
+        }
+
         // Symulacja odświeżania wiadomości
         function refreshNews() {
             const refreshBtn = document.querySelector('.refresh-btn');
@@ -384,6 +647,14 @@
             updateDate();
             animateElements();
             startAutoRefresh();
+            
+            // Aktualizuj ceny kryptowalut co 10 sekund
+            updateCryptoPrices();
+            setInterval(updateCryptoPrices, 10000);
+            
+            // Aktualizuj Rezonans Schumana co 30 sekund
+            updateSchumannResonance();
+            setInterval(updateSchumannResonance, 30000);
         });
 
         // Dodaj efekt parallax dla tła
